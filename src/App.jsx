@@ -6,6 +6,7 @@ import { useI18n } from './i18n/useI18n';
 import Sidebar from './components/Sidebar';
 import LoginScreen from './components/LoginScreen';
 import LoadingScreen from './components/LoadingScreen';
+import UpdateBanner from './components/UpdateBanner';
 import TasksView from './features/tasks/TasksView';
 import IdeasView from './features/ideas/IdeasView';
 import ProjectsView from './features/projects/ProjectsView';
@@ -44,15 +45,18 @@ export default function App() {
     }
   }, [user?.uid, startSync, stopSync]);
 
-  if (authLoading) return <LoadingScreen />;
-  if (!user) return <LoginScreen />;
+  if (authLoading) return <><UpdateBanner /><LoadingScreen /></>;
+  if (!user) return <><UpdateBanner /><LoginScreen /></>;
 
   return (
-    <div className="app">
-      <Sidebar />
-      <main className="main">
-        <ViewComponent />
-      </main>
-    </div>
+    <>
+      <UpdateBanner />
+      <div className="app">
+        <Sidebar />
+        <main className="main">
+          <ViewComponent />
+        </main>
+      </div>
+    </>
   );
 }

@@ -1,12 +1,13 @@
 import { useAppStore } from '../store/useAppStore';
 import { useI18n } from '../i18n/useI18n';
+import { getCurrentVersion } from '../lib/useUpdateCheck';
 import UserBadge from './UserBadge';
 
 const NAV = [
   { key: 'tasks', icon: '✓', count: (s) => s.tasks.filter((t) => t.status !== 'done').length },
   { key: 'ideas', icon: '💡', count: (s) => s.ideas.length },
   { key: 'projects', icon: '📁', count: (s) => s.projects.length },
-  { key: 'settings', icon: '⚙', count: null },
+  // { key: 'settings', icon: '⚙', count: null },
 ];
 
 export default function Sidebar() {
@@ -35,7 +36,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <UserBadge />
-      <div className="sidebar__footer">{t('app.footer')}</div>
+      <div className="sidebar__footer">{t('app.footer', { version: getCurrentVersion() })}</div>
     </aside>
   );
 }

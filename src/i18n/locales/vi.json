@@ -1,7 +1,11 @@
 {
   "app": {
     "brand": "NoteFlow",
-    "footer": "v0.1 · Lưu cục bộ"
+    "footer": "v{version}"
+  },
+  "update": {
+    "title": "Có phiên bản mới",
+    "refresh": "Cập nhật ngay"
   },
   "nav": {
     "tasks": "Công việc",

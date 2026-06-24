@@ -1,7 +1,11 @@
 {
   "app": {
     "brand": "NoteFlow",
-    "footer": "v0.1 · Stored locally"
+    "footer": "v{version}"
+  },
+  "update": {
+    "title": "New version available",
+    "refresh": "Update now"
   },
   "nav": {
     "tasks": "Tasks",

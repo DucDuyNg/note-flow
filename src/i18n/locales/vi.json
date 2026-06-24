@@ -1,0 +1,175 @@
+{
+  "app": {
+    "brand": "NoteFlow",
+    "footer": "v0.1 · Lưu cục bộ"
+  },
+  "nav": {
+    "tasks": "Công việc",
+    "ideas": "Ý tưởng",
+    "projects": "Dự án",
+    "settings": "Cài đặt"
+  },
+  "common": {
+    "save": "Lưu",
+    "cancel": "Huỷ",
+    "create": "Tạo",
+    "edit": "Sửa",
+    "delete": "Xoá",
+    "close": "Đóng",
+    "all": "Tất cả",
+    "search": "Tìm kiếm",
+    "untitled": "Chưa đặt tên",
+    "loading": "Đang tải..."
+  },
+  "login": {
+    "title": "Chào mừng đến NoteFlow",
+    "desc": "Đăng nhập để đồng bộ công việc, ý tưởng và dự án của bạn lên đám mây.",
+    "googleBtn": "Đăng nhập với Google",
+    "privacy": "Dữ liệu được lưu trong Firestore của riêng tài khoản bạn — không ai khác đọc được.",
+    "signOut": "Đăng xuất",
+    "notConfiguredTitle": "Chưa cấu hình Firebase",
+    "notConfiguredDesc": "Tạo file .env ở thư mục gốc với các biến sau rồi khởi động lại dev server:"
+  },
+  "category": {
+    "work": "Công việc",
+    "personal": "Cá nhân"
+  },
+  "priority": {
+    "low": "Thấp",
+    "medium": "Trung bình",
+    "high": "Cao"
+  },
+  "status": {
+    "todo": "Chưa làm",
+    "doing": "Đang làm",
+    "done": "Đã xong"
+  },
+  "tasks": {
+    "title": "Công việc",
+    "subtitle": "Quản lý mọi thứ cần làm — kéo từ \"Chưa làm\" tới \"Đã xong\"",
+    "addBtn": "+ Thêm công việc",
+    "searchPlaceholder": "Tìm theo tiêu đề hoặc mô tả...",
+    "allProjects": "Mọi dự án",
+    "noProject": "Không thuộc dự án",
+    "stats": {
+      "total": "Tổng cộng",
+      "todo": "Chưa làm",
+      "doing": "Đang làm",
+      "done": "Đã xong"
+    },
+    "empty": {
+      "title": "Chưa có công việc nào",
+      "desc": "Bắt đầu bằng cách thêm công việc đầu tiên."
+    },
+    "card": {
+      "start": "▶ Bắt đầu",
+      "complete": "✓ Hoàn thành",
+      "reopen": "↺ Mở lại",
+      "overduePrefix": "Quá hạn · "
+    },
+    "form": {
+      "titleCreate": "Tạo công việc mới",
+      "titleEdit": "Sửa công việc",
+      "fieldTitle": "Tiêu đề *",
+      "fieldTitlePlaceholder": "vd: Hoàn thành báo cáo Q3",
+      "fieldDescription": "Mô tả",
+      "fieldDescriptionPlaceholder": "Chi tiết về công việc...",
+      "fieldStatus": "Trạng thái",
+      "fieldPriority": "Mức ưu tiên",
+      "fieldCategory": "Phân loại",
+      "fieldProject": "Dự án",
+      "fieldDueDate": "Hạn chót"
+    },
+    "confirmDelete": "Xoá công việc này?"
+  },
+  "ideas": {
+    "title": "Ý tưởng",
+    "subtitle": "Nơi ghi lại mọi ý tưởng — chưa cần biết khi nào làm",
+    "addBtn": "+ Ghi ý tưởng",
+    "searchPlaceholder": "Tìm trong tiêu đề, nội dung, tags...",
+    "empty": {
+      "title": "Chưa có ý tưởng nào",
+      "desc": "Khi có gì hay, ghi xuống ngay — đừng để quên."
+    },
+    "emptyFiltered": "Không tìm thấy ý tưởng phù hợp",
+    "form": {
+      "titleCreate": "Ghi ý tưởng mới",
+      "titleEdit": "Sửa ý tưởng",
+      "saveBtn": "Lưu ý tưởng",
+      "fieldTitle": "Tiêu đề *",
+      "fieldTitlePlaceholder": "vd: App ghi chú thông minh",
+      "fieldContent": "Nội dung",
+      "fieldContentPlaceholder": "Mô tả chi tiết ý tưởng...",
+      "fieldTags": "Tags (cách nhau bằng dấu phẩy)",
+      "fieldTagsPlaceholder": "web, ai, productivity",
+      "fieldCategory": "Phân loại"
+    },
+    "confirmDelete": "Xoá ý tưởng này?"
+  },
+  "projects": {
+    "title": "Dự án",
+    "subtitle": "Gom các công việc liên quan thành dự án để theo dõi tiến độ",
+    "addBtn": "+ Thêm dự án",
+    "empty": {
+      "title": "Chưa có dự án nào",
+      "desc": "Tạo dự án để gom các công việc liên quan."
+    },
+    "card": {
+      "viewTasks": "Xem công việc",
+      "taskCount": "{done}/{total} công việc"
+    },
+    "form": {
+      "titleCreate": "Tạo dự án mới",
+      "titleEdit": "Sửa dự án",
+      "saveBtn": "Tạo dự án",
+      "fieldName": "Tên dự án *",
+      "fieldNamePlaceholder": "vd: Khởi nghiệp 2026",
+      "fieldDescription": "Mô tả",
+      "fieldDescriptionPlaceholder": "Mục tiêu, ngữ cảnh của dự án...",
+      "fieldCategory": "Phân loại",
+      "fieldColor": "Màu nhãn",
+      "colorSelectAria": "Chọn màu {color}"
+    },
+    "confirmDelete": "Xoá dự án \"{name}\"? Công việc sẽ không bị xoá."
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "subtitle": "Quản lý dữ liệu — toàn bộ được lưu trong trình duyệt",
+    "language": {
+      "title": "Ngôn ngữ",
+      "desc": "Chọn ngôn ngữ hiển thị cho ứng dụng.",
+      "vi": "Tiếng Việt",
+      "en": "English"
+    },
+    "theme": {
+      "title": "Giao diện",
+      "desc": "Chọn bảng màu cho ứng dụng.",
+      "default": "Mặc định",
+      "blue-on-white": "Xanh trên trắng"
+    },
+    "overview": {
+      "title": "Tổng quan dữ liệu",
+      "summary": "Bạn đang có <b>{tasks}</b> công việc, <b>{ideas}</b> ý tưởng và <b>{projects}</b> dự án."
+    },
+    "backup": {
+      "title": "Sao lưu & khôi phục",
+      "desc": "Xuất ra file JSON để backup hoặc chuyển sang máy khác. Nhập lại sẽ <b>ghi đè</b> toàn bộ dữ liệu hiện có.",
+      "exportBtn": "⬇ Xuất JSON",
+      "importBtn": "⬆ Nhập JSON",
+      "importSuccess": "Nhập dữ liệu thành công.",
+      "importError": "File không hợp lệ: {message}"
+    },
+    "seed": {
+      "title": "Dữ liệu mẫu",
+      "desc": "Nạp lại dữ liệu mẫu để xem app hoạt động ra sao. <b>Sẽ ghi đè dữ liệu hiện tại.</b>",
+      "loadBtn": "↺ Nạp dữ liệu mẫu",
+      "confirm": "Ghi đè dữ liệu hiện tại bằng dữ liệu mẫu?"
+    },
+    "danger": {
+      "title": "Vùng nguy hiểm",
+      "desc": "Xoá toàn bộ dữ liệu trong trình duyệt. Không thể hoàn tác — nhớ xuất JSON trước nếu cần.",
+      "clearBtn": "🗑 Xoá toàn bộ",
+      "confirm": "Xoá TOÀN BỘ dữ liệu? Hành động này không thể hoàn tác."
+    }
+  }
+}

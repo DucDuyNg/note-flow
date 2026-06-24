@@ -1,0 +1,94 @@
+:root {
+  /* Brand */
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-soft: #eef2ff;
+
+  /* Surfaces */
+  --color-bg: #f7f8fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3f4f8;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+
+  /* Text */
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-text-soft: #9ca3af;
+
+  /* Status */
+  --color-todo: #6b7280;
+  --color-doing: #2563eb;
+  --color-done: #16a34a;
+  --color-danger: #dc2626;
+  --color-warning: #d97706;
+
+  /* Category */
+  --color-work: #2563eb;
+  --color-personal: #db2777;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --sidebar-width: 240px;
+  --topbar-height: 60px;
+}
+
+/* Default theme respects the OS dark-mode preference. Explicit themes
+   (anything other than `default`) opt out of this auto-switch. */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="default"] {
+    --color-bg: #0f1116;
+    --color-surface: #181b22;
+    --color-surface-2: #20242c;
+    --color-border: #2a2f38;
+    --color-border-strong: #3a4150;
+    --color-text: #e6e8ee;
+    --color-text-muted: #9ba3b1;
+    --color-text-soft: #6b7280;
+    --color-primary-soft: #1e1f3a;
+  }
+}
+
+/* ===== Theme: blue-on-white =====
+   White background everywhere, every piece of text in a blue tone. */
+:root[data-theme="blue-on-white"] {
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1e40af;
+  --color-primary-soft: #dbeafe;
+
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0f6ff;
+  --color-border: #bfdbfe;
+  --color-border-strong: #93c5fd;
+
+  --color-text: #1d4ed8;
+  --color-text-muted: #2563eb;
+  --color-text-soft: #60a5fa;
+
+  --color-todo: #60a5fa;
+  --color-doing: #1d4ed8;
+  --color-done: #1e40af;
+  --color-danger: #1e3a8a;
+  --color-warning: #2563eb;
+
+  --color-work: #1d4ed8;
+  --color-personal: #2563eb;
+}

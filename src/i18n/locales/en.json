@@ -1,0 +1,175 @@
+{
+  "app": {
+    "brand": "NoteFlow",
+    "footer": "v0.1 · Stored locally"
+  },
+  "nav": {
+    "tasks": "Tasks",
+    "ideas": "Ideas",
+    "projects": "Projects",
+    "settings": "Settings"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "all": "All",
+    "search": "Search",
+    "untitled": "Untitled",
+    "loading": "Loading..."
+  },
+  "login": {
+    "title": "Welcome to NoteFlow",
+    "desc": "Sign in to sync your tasks, ideas and projects to the cloud.",
+    "googleBtn": "Sign in with Google",
+    "privacy": "Your data lives in your own Firestore account — no one else can read it.",
+    "signOut": "Sign out",
+    "notConfiguredTitle": "Firebase not configured",
+    "notConfiguredDesc": "Create a .env file at the project root with the following variables, then restart the dev server:"
+  },
+  "category": {
+    "work": "Work",
+    "personal": "Personal"
+  },
+  "priority": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
+  },
+  "status": {
+    "todo": "To do",
+    "doing": "In progress",
+    "done": "Done"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "subtitle": "Manage everything that needs doing — drag from \"To do\" to \"Done\"",
+    "addBtn": "+ Add task",
+    "searchPlaceholder": "Search by title or description...",
+    "allProjects": "All projects",
+    "noProject": "No project",
+    "stats": {
+      "total": "Total",
+      "todo": "To do",
+      "doing": "In progress",
+      "done": "Done"
+    },
+    "empty": {
+      "title": "No tasks yet",
+      "desc": "Start by adding your first task."
+    },
+    "card": {
+      "start": "▶ Start",
+      "complete": "✓ Complete",
+      "reopen": "↺ Reopen",
+      "overduePrefix": "Overdue · "
+    },
+    "form": {
+      "titleCreate": "Create new task",
+      "titleEdit": "Edit task",
+      "fieldTitle": "Title *",
+      "fieldTitlePlaceholder": "e.g. Finish Q3 report",
+      "fieldDescription": "Description",
+      "fieldDescriptionPlaceholder": "Details about this task...",
+      "fieldStatus": "Status",
+      "fieldPriority": "Priority",
+      "fieldCategory": "Category",
+      "fieldProject": "Project",
+      "fieldDueDate": "Due date"
+    },
+    "confirmDelete": "Delete this task?"
+  },
+  "ideas": {
+    "title": "Ideas",
+    "subtitle": "Capture every idea — you don't need to know when you'll act on it",
+    "addBtn": "+ Add idea",
+    "searchPlaceholder": "Search in title, content, tags...",
+    "empty": {
+      "title": "No ideas yet",
+      "desc": "When something interesting hits you, write it down before you forget."
+    },
+    "emptyFiltered": "No ideas match your search",
+    "form": {
+      "titleCreate": "New idea",
+      "titleEdit": "Edit idea",
+      "saveBtn": "Save idea",
+      "fieldTitle": "Title *",
+      "fieldTitlePlaceholder": "e.g. Smart note-taking app",
+      "fieldContent": "Content",
+      "fieldContentPlaceholder": "Describe the idea in detail...",
+      "fieldTags": "Tags (comma separated)",
+      "fieldTagsPlaceholder": "web, ai, productivity",
+      "fieldCategory": "Category"
+    },
+    "confirmDelete": "Delete this idea?"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Group related tasks into projects to track progress",
+    "addBtn": "+ Add project",
+    "empty": {
+      "title": "No projects yet",
+      "desc": "Create a project to group related tasks."
+    },
+    "card": {
+      "viewTasks": "View tasks",
+      "taskCount": "{done}/{total} tasks"
+    },
+    "form": {
+      "titleCreate": "Create new project",
+      "titleEdit": "Edit project",
+      "saveBtn": "Create project",
+      "fieldName": "Project name *",
+      "fieldNamePlaceholder": "e.g. Startup 2026",
+      "fieldDescription": "Description",
+      "fieldDescriptionPlaceholder": "Goal, context of the project...",
+      "fieldCategory": "Category",
+      "fieldColor": "Label color",
+      "colorSelectAria": "Pick color {color}"
+    },
+    "confirmDelete": "Delete project \"{name}\"? Its tasks will be kept."
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your data — everything is stored in your browser",
+    "language": {
+      "title": "Language",
+      "desc": "Choose the display language for the app.",
+      "vi": "Tiếng Việt",
+      "en": "English"
+    },
+    "theme": {
+      "title": "Theme",
+      "desc": "Choose a color palette for the app.",
+      "default": "Default",
+      "blue-on-white": "Blue on white"
+    },
+    "overview": {
+      "title": "Data overview",
+      "summary": "You have <b>{tasks}</b> tasks, <b>{ideas}</b> ideas and <b>{projects}</b> projects."
+    },
+    "backup": {
+      "title": "Backup & restore",
+      "desc": "Export to a JSON file to back up or transfer to another machine. Importing will <b>overwrite</b> your current data.",
+      "exportBtn": "⬇ Export JSON",
+      "importBtn": "⬆ Import JSON",
+      "importSuccess": "Data imported successfully.",
+      "importError": "Invalid file: {message}"
+    },
+    "seed": {
+      "title": "Sample data",
+      "desc": "Reload sample data to see how the app works. <b>This will overwrite current data.</b>",
+      "loadBtn": "↺ Load sample data",
+      "confirm": "Overwrite current data with sample data?"
+    },
+    "danger": {
+      "title": "Danger zone",
+      "desc": "Delete all data in this browser. Cannot be undone — export JSON first if you need to.",
+      "clearBtn": "🗑 Delete everything",
+      "confirm": "Delete ALL data? This action cannot be undone."
+    }
+  }
+}

@@ -1,0 +1,27 @@
+rules_version = '2';
+
+// Production-mode rules for NoteFlow.
+//
+// Policy: every document lives under `users/{uid}/...`. A signed-in user can
+// only read/write documents whose `{uid}` segment matches their own auth uid.
+// Everything else is denied (default-deny on unmatched paths).
+//
+// Deploy: `firebase deploy --only firestore:rules`
+// Or copy the contents below into Firebase Console > Firestore Database > Rules.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Owner-only access to a user's tasks, ideas, and projects.
+    match /users/{uid}/{collection}/{docId} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == uid
+                         && collection in ['tasks', 'ideas', 'projects'];
+    }
+
+    // Default deny — anything outside the path above is blocked.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -4,8 +4,8 @@ import { readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Vite config lives in /configs/ — paths are anchored to the project root
-// (one level up) so Vite still finds index.html, src/, public/, dist/.
+// This config lives in /configs/. Paths are anchored to the project root
+// (one directory up) so Vite finds index.html, src/, public/, dist/ there.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
@@ -14,6 +14,10 @@ const pkg = JSON.parse(readFileSync(resolve(projectRoot, 'package.json'), 'utf-8
 const APP_VERSION = pkg.version;
 const BUILD_TIME = new Date().toISOString();
 
+// Emit a small JSON file at /version.json so the running app can poll the
+// server to detect when a newer deploy is available. Hashed JS/CSS get
+// cache-busted automatically by Vite — only index.html + this file need to
+// be served with `no-cache` (see firebase.json headers).
 function emitVersionJson() {
   return {
     name: 'emit-version-json',

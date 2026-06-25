@@ -7,6 +7,50 @@
     "title": "New version available",
     "refresh": "Update now"
   },
+  "teams": {
+    "title": "Teams",
+    "subtitle": "Create a team to share tasks, ideas and projects with friends and colleagues",
+    "addBtn": "Create team",
+    "manage": "Manage teams",
+    "personal": "Personal",
+    "personalDesc": "Your private notes — no one else can read",
+    "unknownWorkspace": "Unknown workspace",
+    "currentWorkspace": "Viewing",
+    "activeWorkspace": "Active",
+    "switchTo": "Switch to this team",
+    "yourTeams": "Your teams",
+    "backToList": "All teams",
+    "memberCount": "{count} members",
+    "deleteBtn": "Delete team",
+    "leaveBtn": "Leave team",
+    "confirmDelete": "Permanently delete team \"{name}\" and all its data?",
+    "confirmLeave": "Leave team \"{name}\"?",
+    "empty": {
+      "title": "No teams yet",
+      "desc": "Create a team to collaborate with your partner, friends or colleagues."
+    },
+    "form": {
+      "create": "Create new team",
+      "name": "Team name",
+      "namePlaceholder": "e.g. Family, Marketing team..."
+    },
+    "members": {
+      "title": "Members",
+      "you": "You",
+      "owner": "Owner",
+      "confirmRemove": "Remove {name} from the team?"
+    },
+    "invite": {
+      "title": "Invite to \"{team}\"",
+      "btn": "Invite member",
+      "emailLabel": "Email of the person to invite",
+      "hint": "The invitee must have signed in to the app with Google at least once.",
+      "success": "Added {name} to the team.",
+      "errorNotFound": "No user found with this email. They need to sign in at least once.",
+      "errorAlreadyMember": "This person is already in the team.",
+      "errorSelfInvite": "You're already in this team."
+    }
+  },
   "nav": {
     "tasks": "Tasks",
     "ideas": "Ideas",
@@ -65,6 +109,7 @@
       "title": "No tasks yet",
       "desc": "Start by adding your first task."
     },
+    "emptyFiltered": "No tasks in this view",
     "card": {
       "start": "▶ Start",
       "complete": "✓ Complete",

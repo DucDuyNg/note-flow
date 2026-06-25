@@ -7,6 +7,50 @@
     "title": "Có phiên bản mới",
     "refresh": "Cập nhật ngay"
   },
+  "teams": {
+    "title": "Nhóm",
+    "subtitle": "Tạo nhóm để chia sẻ công việc, ý tưởng và dự án với bạn bè, đồng nghiệp",
+    "addBtn": "Tạo nhóm mới",
+    "manage": "Quản lý nhóm",
+    "personal": "Cá nhân",
+    "personalDesc": "Công việc riêng của bạn — không ai khác đọc được",
+    "unknownWorkspace": "Workspace không xác định",
+    "currentWorkspace": "Đang xem",
+    "activeWorkspace": "Đang dùng",
+    "switchTo": "Chuyển sang nhóm này",
+    "yourTeams": "Nhóm của bạn",
+    "backToList": "Tất cả nhóm",
+    "memberCount": "{count} thành viên",
+    "deleteBtn": "Xoá nhóm",
+    "leaveBtn": "Rời nhóm",
+    "confirmDelete": "Xoá vĩnh viễn nhóm \"{name}\" và mọi dữ liệu trong đó?",
+    "confirmLeave": "Rời khỏi nhóm \"{name}\"?",
+    "empty": {
+      "title": "Chưa có nhóm nào",
+      "desc": "Tạo nhóm để cùng vợ/chồng, bạn bè hoặc đồng nghiệp quản lý công việc chung."
+    },
+    "form": {
+      "create": "Tạo nhóm mới",
+      "name": "Tên nhóm",
+      "namePlaceholder": "vd: Gia đình, Team Marketing..."
+    },
+    "members": {
+      "title": "Thành viên",
+      "you": "Bạn",
+      "owner": "Quản trị",
+      "confirmRemove": "Xoá {name} khỏi nhóm?"
+    },
+    "invite": {
+      "title": "Mời thành viên vào \"{team}\"",
+      "btn": "Mời thành viên",
+      "emailLabel": "Email của người muốn mời",
+      "hint": "Người được mời phải đã từng đăng nhập vào app bằng Google.",
+      "success": "Đã thêm {name} vào nhóm.",
+      "errorNotFound": "Không tìm thấy user với email này. Họ cần đăng nhập app ít nhất 1 lần.",
+      "errorAlreadyMember": "Người này đã ở trong nhóm rồi.",
+      "errorSelfInvite": "Bạn đã ở trong nhóm này."
+    }
+  },
   "nav": {
     "tasks": "Công việc",
     "ideas": "Ý tưởng",
@@ -65,6 +109,7 @@
       "title": "Chưa có công việc nào",
       "desc": "Bắt đầu bằng cách thêm công việc đầu tiên."
     },
+    "emptyFiltered": "Không có công việc nào ở mục này",
     "card": {
       "start": "▶ Bắt đầu",
       "complete": "✓ Hoàn thành",

@@ -5,7 +5,13 @@ import TaskCard from './TaskCard';
 import TaskForm from './TaskForm';
 import EmptyState from '../../components/EmptyState';
 
-const COLUMN_KEYS = ['todo', 'doing', 'done'];
+// Status toggles shown as the 4 stat cards. First entry is the default.
+const STATUS_TOGGLES = [
+  { key: 'all', labelKey: 'tasks.stats.total', countKey: 'total' },
+  { key: 'todo', labelKey: 'tasks.stats.todo', countKey: 'todo', color: 'var(--color-todo)' },
+  { key: 'doing', labelKey: 'tasks.stats.doing', countKey: 'doing', color: 'var(--color-doing)' },
+  { key: 'done', labelKey: 'tasks.stats.done', countKey: 'done', color: 'var(--color-done)' },
+];
 
 export default function TasksView() {
   const tasks = useAppStore((s) => s.tasks);
@@ -16,8 +22,11 @@ export default function TasksView() {
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState(null);
 
+  const statusFilter = filters.status || 'all';
+
   const filtered = useMemo(() => {
     return tasks.filter((task) => {
+      if (statusFilter !== 'all' && task.status !== statusFilter) return false;
       if (filters.category !== 'all' && task.category !== filters.category) return false;
       if (filters.projectId !== 'all' && task.projectId !== filters.projectId) return false;
       if (filters.search) {
@@ -26,13 +35,7 @@ export default function TasksView() {
       }
       return true;
     });
-  }, [tasks, filters]);
-
-  const grouped = useMemo(() => {
-    const g = { todo: [], doing: [], done: [] };
-    filtered.forEach((task) => g[task.status].push(task));
-    return g;
-  }, [filtered]);
+  }, [tasks, filters, statusFilter]);
 
   const stats = useMemo(() => ({
     total: tasks.length,
@@ -54,11 +57,21 @@ export default function TasksView() {
         <button className="btn btn--primary" onClick={openCreate}>{t('tasks.addBtn')}</button>
       </header>
 
-      <div className="stats">
-        <div className="stat"><div className="stat__label">{t('tasks.stats.total')}</div><div className="stat__value">{stats.total}</div></div>
-        <div className="stat"><div className="stat__label">{t('tasks.stats.todo')}</div><div className="stat__value" style={{ color: 'var(--color-todo)' }}>{stats.todo}</div></div>
-        <div className="stat"><div className="stat__label">{t('tasks.stats.doing')}</div><div className="stat__value" style={{ color: 'var(--color-doing)' }}>{stats.doing}</div></div>
-        <div className="stat"><div className="stat__label">{t('tasks.stats.done')}</div><div className="stat__value" style={{ color: 'var(--color-done)' }}>{stats.done}</div></div>
+      <div className="stats" role="tablist" aria-label={t('tasks.stats.total')}>
+        {STATUS_TOGGLES.map((opt) => (
+          <button
+            key={opt.key}
+            className={`stat ${statusFilter === opt.key ? 'is-active' : ''}`}
+            onClick={() => setFilters({ status: opt.key })}
+            role="tab"
+            aria-selected={statusFilter === opt.key}
+          >
+            <div className="stat__label">{t(opt.labelKey)}</div>
+            <div className="stat__value" style={opt.color ? { color: opt.color } : undefined}>
+              {stats[opt.countKey]}
+            </div>
+          </button>
+        ))}
       </div>
 
       <div className="toolbar">
@@ -99,16 +112,12 @@ export default function TasksView() {
           description={t('tasks.empty.desc')}
           action={<button className="btn btn--primary" onClick={openCreate}>{t('tasks.addBtn')}</button>}
         />
+      ) : filtered.length === 0 ? (
+        <EmptyState icon="🔍" title={t('tasks.emptyFiltered')} />
       ) : (
-        <div className="board">
-          {COLUMN_KEYS.map((key) => (
-            <div key={key} className={`column column--${key}`}>
-              <div className="column__header">
-                <span>{t(`status.${key}`)}</span>
-                <span className="column__count">{grouped[key].length}</span>
-              </div>
-              {grouped[key].map((task) => <TaskCard key={task.id} task={task} onEdit={openEdit} />)}
-            </div>
+        <div className="task-list">
+          {filtered.map((task) => (
+            <TaskCard key={task.id} task={task} onEdit={openEdit} showStatus={statusFilter === 'all'} />
           ))}
         </div>
       )}

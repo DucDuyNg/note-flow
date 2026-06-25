@@ -2,7 +2,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { useI18n } from '../../i18n/useI18n';
 import { formatDate, isOverdue } from '../../lib/date';
 
-export default function TaskCard({ task, onEdit }) {
+export default function TaskCard({ task, onEdit, showStatus = false }) {
   const deleteTask = useAppStore((s) => s.deleteTask);
   const setTaskStatus = useAppStore((s) => s.setTaskStatus);
   const project = useAppStore((s) => s.projects.find((p) => p.id === task.projectId));
@@ -13,10 +13,13 @@ export default function TaskCard({ task, onEdit }) {
   const overdue = task.dueDate && task.status !== 'done' && isOverdue(task.dueDate);
 
   return (
-    <article className="card task-card">
+    <article className={`card task-card task-card--${task.status}`}>
       <div className={`task-card__title ${task.status === 'done' ? 'is-done' : ''}`}>{task.title}</div>
       {task.description && <div className="task-card__desc">{task.description}</div>}
       <div className="task-card__meta">
+        {showStatus && (
+          <span className={`badge badge--status-${task.status}`}>{t(`status.${task.status}`)}</span>
+        )}
         <span className={`badge badge--priority-${task.priority}`}>{t(`priority.${task.priority}`)}</span>
         <span className={`badge badge--category-${task.category}`}>{t(`category.${task.category}`)}</span>
         {project && (

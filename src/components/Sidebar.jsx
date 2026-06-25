@@ -2,6 +2,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useI18n } from '../i18n/useI18n';
 import { getCurrentVersion } from '../lib/useUpdateCheck';
 import UserBadge from './UserBadge';
+import WorkspaceSwitcher from './WorkspaceSwitcher';
 
 const NAV = [
   { key: 'tasks', icon: '✓', count: (s) => s.tasks.filter((t) => t.status !== 'done').length },
@@ -22,6 +23,7 @@ export default function Sidebar() {
         <div className="sidebar__brand-icon">N</div>
         <span>{t('app.brand')}</span>
       </div>
+      <WorkspaceSwitcher />
       <nav className="sidebar__nav">
         {NAV.map((item) => (
           <button

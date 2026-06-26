@@ -1728,17 +1728,28 @@ body {
 }
 
 .note-editor__links-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
+/* Single horizontal row + scroll. Prevents chips from wrapping into
+   multiple lines (which would push themselves out of the modal). */
 .note-editor__links-list {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.note-editor__links-list::-webkit-scrollbar { height: 4px; }
+.note-editor__links-list::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
 }
 
 .note-editor__link-chip {
@@ -1753,6 +1764,11 @@ body {
   font-weight: 500;
   border: 1px solid transparent;
   transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .note-editor__link-chip:hover {
@@ -1779,8 +1795,14 @@ body {
 
   .note-editor {
     height: 100vh;
+    /* dvh respects mobile browser chrome (address bar) — fallback for older browsers */
+    height: 100dvh;
     max-width: 100%;
     border-radius: 0;
+  }
+  /* Make sure the bottom links panel sits above the iPhone home indicator */
+  .note-editor__links {
+    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0));
   }
 
   .note-editor__title {

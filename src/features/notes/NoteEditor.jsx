@@ -3,7 +3,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { useI18n } from '../../i18n/useI18n';
 import { formatRelative } from '../../lib/date';
 import { extractUrls, Linkify } from '../../lib/linkify';
-
+import { PiLinkSimpleHorizontalBold } from "react-icons/pi";
 /**
  * Full-screen note editor with debounced auto-save.
  *
@@ -50,20 +50,25 @@ export default function NoteEditor({ open, noteId, onClose }) {
     }
   }, [open, noteId]);
 
-  // Auto-save with debounce
+  // Auto-save with debounce. The actual Firestore write is fire-and-forget —
+  // offline persistence queues it to IndexedDB immediately and syncs in the
+  // background, so we don't await.
   useEffect(() => {
     if (!open || !activeId) return;
     const changed = title !== initialRef.current.title || content !== initialRef.current.content;
     if (!changed) return;
     setStatus('saving');
-    const timer = setTimeout(async () => {
-      await updateNote(activeId, { title, content });
+    let fadeTimer = null;
+    const saveTimer = setTimeout(() => {
+      updateNote(activeId, { title, content });
       initialRef.current = { title, content };
       setStatus('saved');
-      const fade = setTimeout(() => setStatus(null), 1500);
-      return () => clearTimeout(fade);
+      fadeTimer = setTimeout(() => setStatus(null), 1500);
     }, 600);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(saveTimer);
+      if (fadeTimer) clearTimeout(fadeTimer);
+    };
   }, [title, content, activeId, open, updateNote]);
 
   // Esc to close
@@ -75,12 +80,17 @@ export default function NoteEditor({ open, noteId, onClose }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, title, content, activeId]);
 
-  const handleClose = async () => {
-    if (activeId && !title.trim() && !content.trim()) {
-      await deleteNote(activeId);
-    } else if (activeId && status === 'saving') {
-      // flush latest content before close
-      await updateNote(activeId, { title, content });
+  // Close is synchronous — we fire writes without awaiting so the modal
+  // closes instantly. Firestore offline persistence guarantees the write
+  // (or delete) eventually lands.
+  const handleClose = () => {
+    if (activeId) {
+      if (!title.trim() && !content.trim()) {
+        deleteNote(activeId);
+      } else {
+        const changed = title !== initialRef.current.title || content !== initialRef.current.content;
+        if (changed) updateNote(activeId, { title, content });
+      }
     }
     onClose();
   };
@@ -184,7 +194,7 @@ export default function NoteEditor({ open, noteId, onClose }) {
 
         {links.length > 0 && (
           <div className="note-editor__links">
-            <div className="note-editor__links-label">🔗 {t('notes.editor.links')}</div>
+            <div className="note-editor__links-label"><PiLinkSimpleHorizontalBold /><span>{t('notes.editor.links')}</span></div>
             <div className="note-editor__links-list">
               {links.map((url) => (
                 <a

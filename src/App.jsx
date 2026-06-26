@@ -8,9 +8,11 @@ import Sidebar from './components/Sidebar';
 import LoginScreen from './components/LoginScreen';
 import LoadingScreen from './components/LoadingScreen';
 import UpdateBanner from './components/UpdateBanner';
+import UserBadge from './components/UserBadge';
 import TasksView from './features/tasks/TasksView';
 import IdeasView from './features/ideas/IdeasView';
 import ProjectsView from './features/projects/ProjectsView';
+import NotesView from './features/notes/NotesView';
 import SettingsView from './features/settings/SettingsView';
 import TeamsView from './features/teams/TeamsView';
 
@@ -18,6 +20,7 @@ const VIEWS = {
   tasks: TasksView,
   ideas: IdeasView,
   projects: ProjectsView,
+  notes: NotesView,
   settings: SettingsView,
   teams: TeamsView,
 };
@@ -68,6 +71,9 @@ export default function App() {
         <main className="main">
           <ViewComponent />
         </main>
+        <div className="user-menu-floating">
+          <UserBadge />
+        </div>
       </div>
     </>
   );

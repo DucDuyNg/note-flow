@@ -15,7 +15,7 @@ import { workspaceCol, workspaceDoc, PERSONAL_WORKSPACE } from '../lib/firestore
 import { newId } from '../lib/id';
 import { todayIso } from '../lib/date';
 
-const COLLECTIONS = ['tasks', 'ideas', 'projects'];
+const COLLECTIONS = ['tasks', 'ideas', 'projects', 'notes'];
 
 const SEED_FACTORY = () => {
   const projectId = newId('prj');
@@ -42,6 +42,7 @@ export const useAppStore = create(
       tasks: [],
       ideas: [],
       projects: [],
+      notes: [],
       activeView: 'tasks',
       filters: { category: 'all', projectId: 'all', search: '', status: 'all' },
       // Which workspace data we're looking at: 'personal' or a teamId.
@@ -80,7 +81,7 @@ export const useAppStore = create(
 
       stopSync: () => {
         get()._unsubs.forEach((u) => { try { u(); } catch {} });
-        set({ _unsubs: [], tasks: [], ideas: [], projects: [], ready: false });
+        set({ _unsubs: [], tasks: [], ideas: [], projects: [], notes: [], ready: false });
       },
 
       // ===== Tasks =====
@@ -176,10 +177,51 @@ export const useAppStore = create(
         await batch.commit();
       },
 
+      // ===== Notes (iOS-style freeform quick capture) =====
+      addNote: async (data = {}) => {
+        const uid = _uid();
+        if (!uid) return null;
+        const wsId = get().workspaceId;
+        const now = todayIso();
+        const id = newId('note');
+        await setDoc(workspaceDoc(uid, wsId, 'notes', id), {
+          title: data.title || '',
+          content: data.content || '',
+          pinned: false,
+          createdBy: uid,
+          createdAt: now,
+          updatedAt: now,
+        });
+        return id;
+      },
+      updateNote: async (id, patch) => {
+        const uid = _uid();
+        if (!uid) return;
+        await setDoc(
+          workspaceDoc(uid, get().workspaceId, 'notes', id),
+          { ...patch, updatedAt: todayIso() },
+          { merge: true },
+        );
+      },
+      deleteNote: async (id) => {
+        const uid = _uid();
+        if (!uid) return;
+        await deleteDoc(workspaceDoc(uid, get().workspaceId, 'notes', id));
+      },
+      toggleNotePin: async (id, pinned) => {
+        const uid = _uid();
+        if (!uid) return;
+        await setDoc(
+          workspaceDoc(uid, get().workspaceId, 'notes', id),
+          { pinned: !!pinned, updatedAt: todayIso() },
+          { merge: true },
+        );
+      },
+
       // ===== Data import / export =====
       exportData: () => {
-        const { tasks, ideas, projects } = get();
-        return JSON.stringify({ version: 2, exportedAt: todayIso(), tasks, ideas, projects }, null, 2);
+        const { tasks, ideas, projects, notes } = get();
+        return JSON.stringify({ version: 3, exportedAt: todayIso(), tasks, ideas, projects, notes }, null, 2);
       },
 
       importData: async (payload) => {

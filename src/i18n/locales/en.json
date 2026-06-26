@@ -55,6 +55,7 @@
     "tasks": "Tasks",
     "ideas": "Ideas",
     "projects": "Projects",
+    "notes": "Notes",
     "settings": "Settings"
   },
   "common": {
@@ -130,6 +131,32 @@
       "fieldDueDate": "Due date"
     },
     "confirmDelete": "Delete this task?"
+  },
+  "notes": {
+    "title": "Notes",
+    "subtitle": "Quickly jot anything down — no tags, no deadlines, just text",
+    "addBtn": "New note",
+    "searchPlaceholder": "Search notes...",
+    "untitled": "Untitled",
+    "pinned": "Pinned",
+    "others": "Others",
+    "pin": "Pin to top",
+    "unpin": "Unpin",
+    "confirmDelete": "Delete this note?",
+    "empty": {
+      "title": "No notes yet",
+      "desc": "Jot down thoughts, lists, long ideas — without the structure of tasks."
+    },
+    "emptyFiltered": "No notes match your search",
+    "editor": {
+      "titlePlaceholder": "Title",
+      "contentPlaceholder": "Start writing...",
+      "saving": "Saving...",
+      "saved": "Saved",
+      "lastEdited": "Last edited {time}",
+      "links": "Links",
+      "done": "Done"
+    }
   },
   "ideas": {
     "title": "Ideas",

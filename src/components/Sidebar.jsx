@@ -1,14 +1,19 @@
 import { useAppStore } from '../store/useAppStore';
 import { useI18n } from '../i18n/useI18n';
 import { getCurrentVersion } from '../lib/useUpdateCheck';
-import UserBadge from './UserBadge';
 import WorkspaceSwitcher from './WorkspaceSwitcher';
+import {
+  PiCheckSquareFill,
+  PiNotePencilFill,
+  PiLightbulbFill,
+  PiFolderFill,
+} from 'react-icons/pi';
 
 const NAV = [
-  { key: 'tasks', icon: '✓', count: (s) => s.tasks.filter((t) => t.status !== 'done').length },
-  { key: 'ideas', icon: '💡', count: (s) => s.ideas.length },
-  { key: 'projects', icon: '📁', count: (s) => s.projects.length },
-  // { key: 'settings', icon: '⚙', count: null },
+  { key: 'tasks',    icon: PiCheckSquareFill, count: (s) => s.tasks.filter((t) => t.status !== 'done').length },
+  { key: 'notes',    icon: PiNotePencilFill,  count: (s) => s.notes.length },
+  { key: 'ideas',    icon: PiLightbulbFill,   count: (s) => s.ideas.length },
+  { key: 'projects', icon: PiFolderFill,      count: (s) => s.projects.length },
 ];
 
 export default function Sidebar() {
@@ -25,19 +30,21 @@ export default function Sidebar() {
       </div>
       <WorkspaceSwitcher />
       <nav className="sidebar__nav">
-        {NAV.map((item) => (
-          <button
-            key={item.key}
-            className={`nav-item ${activeView === item.key ? 'is-active' : ''}`}
-            onClick={() => setActiveView(item.key)}
-          >
-            <span className="nav-item__icon" aria-hidden="true">{item.icon}</span>
-            <span>{t(`nav.${item.key}`)}</span>
-            {item.count && <span className="nav-item__count">{item.count(state)}</span>}
-          </button>
-        ))}
+        {NAV.map((item) => {
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.key}
+              className={`nav-item ${activeView === item.key ? 'is-active' : ''}`}
+              onClick={() => setActiveView(item.key)}
+            >
+              <span className="nav-item__icon" aria-hidden="true"><Icon /></span>
+              <span>{t(`nav.${item.key}`)}</span>
+              {item.count && <span className="nav-item__count">{item.count(state)}</span>}
+            </button>
+          );
+        })}
       </nav>
-      <UserBadge />
       <div className="sidebar__footer">{t('app.footer', { version: getCurrentVersion() })}</div>
     </aside>
   );

@@ -55,6 +55,7 @@
     "tasks": "Công việc",
     "ideas": "Ý tưởng",
     "projects": "Dự án",
+    "notes": "Ghi chú",
     "settings": "Cài đặt"
   },
   "common": {
@@ -130,6 +131,32 @@
       "fieldDueDate": "Hạn chót"
     },
     "confirmDelete": "Xoá công việc này?"
+  },
+  "notes": {
+    "title": "Ghi chú",
+    "subtitle": "Ghi nhanh ý nghĩ, đoạn văn dài, bất cứ thứ gì — không cần thẻ tag hay deadline",
+    "addBtn": "Ghi chú mới",
+    "searchPlaceholder": "Tìm trong ghi chú...",
+    "untitled": "Không tiêu đề",
+    "pinned": "Ghim",
+    "others": "Khác",
+    "pin": "Ghim lên đầu",
+    "unpin": "Bỏ ghim",
+    "confirmDelete": "Xoá ghi chú này?",
+    "empty": {
+      "title": "Chưa có ghi chú nào",
+      "desc": "Ghi nhanh suy nghĩ, danh sách, ý tưởng dài — không bị gò bó như task."
+    },
+    "emptyFiltered": "Không tìm thấy ghi chú phù hợp",
+    "editor": {
+      "titlePlaceholder": "Tiêu đề",
+      "contentPlaceholder": "Viết gì cũng được...",
+      "saving": "Đang lưu...",
+      "saved": "Đã lưu",
+      "lastEdited": "Sửa lần cuối {time}",
+      "links": "Liên kết",
+      "done": "Xong"
+    }
   },
   "ideas": {
     "title": "Ý tưởng",

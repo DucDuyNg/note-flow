@@ -61,7 +61,6 @@ export default function IdeasView() {
 
       {ideas.length === 0 ? (
         <EmptyState
-          icon="💡"
           title={t('ideas.empty.title')}
           description={t('ideas.empty.desc')}
           action={<button className="btn btn--primary" onClick={openCreate}>{t('ideas.addBtn')}</button>}
